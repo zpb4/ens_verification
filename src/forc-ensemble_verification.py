@@ -26,15 +26,22 @@ chefs = col_cb[0]  #hefs is colorblind blue
 sd = '1990-10-01' 
 ed = '2019-08-15'
 
+#data is for Feather-Yuba system (YRS) for the Lake Oroville inflow site (ORDC1)
 loc = 'YRS'
 site = 'ORDC1'
 
-ld = 1
-lds = (1,3,5,10)
-pcnt_rnk = (0.95,1)
-pcnt_bse = (0,1)
-low_pcnt_ecrps = (0,0.99)
-upr_pcnt_ecrps = (0.99,1)
+
+#///////////////////////////////////
+#primary parameters to modify
+
+ld = 10                     #lead time (days) for rank histogram and BSE plots
+lds = (1,3,5,10)            #4 lead subset for eCRPS skill score diagram
+pcnt_rnk = (0.9,1)          #percentile of data to evaluate rank histograms (ex. (0.9,1) means between 90th and 100th percentile)
+pcnt_bse = (0,1)            #percentile of data to evaluate BSE; typically leave at (0,1) since BSE is inherently conditioned on different percentiles of the data
+low_pcnt_ecrps = (0,0.9)    #percentile of data to view for first eCRPS plot (panel 4)
+upr_pcnt_ecrps = (0.9,1)    #percentile of data to view for second eCRPS plot (panel 5)
+
+#///////////////////////////////////
 
 Q_hefs,Qf_hefs_inp,dowy_hefs,tocs,df_idx_hefs = syn_util.extract(sd,ed,forecast_type='hefs',syn_sample='',Rsyn_path='./',syn_vers='',forecast_param='',loc=loc,site=site,opt_pcnt=0.99,gen_setup='')
 Qf_hefs = verify.onesamp_forecast_rearrange(Qf_hefs_inp)
