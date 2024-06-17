@@ -6,8 +6,23 @@ from numba import jit
 cfs_to_afd = 2.29568411*10**-5 * 86400
 afd_to_cfs = 1 / cfs_to_afd
 
-def water_day(d):
-  return d - 274 if d >= 274 else d + 91
+def water_day(d, is_leap_year):
+    # Convert the date to day of the year
+    day_of_year = d.timetuple().tm_yday
+    
+    # For leap years, adjust the day_of_year for dates after Feb 28
+    if is_leap_year and day_of_year > 59:
+        day_of_year -= 1  # Correcting the logic by subtracting 1 instead of adding
+    
+    # Calculate water day
+    if day_of_year >= 274:
+        # Dates on or after October 1
+        dowy = day_of_year - 274
+    else:
+        # Dates before October 1
+        dowy = day_of_year + 91  # Adjusting to ensure correct offset
+    
+    return dowy
 
 def cdec_build_url(station=None, sensor=None, duration=None, sd=None, ed=None):
   url = 'http://cdec.water.ca.gov/dynamicapp/req/CSVDataServlet?'
