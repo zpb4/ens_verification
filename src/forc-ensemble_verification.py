@@ -160,7 +160,7 @@ ax3.set_xlim([0,4.5])
 ax3.set_ylim([0,1])
 ax3.set_title('Ensemble CRPS Skill Score')
 ax3.set_ylabel('eCRPS skill score')
-ax3.text(2.75,0.75,str(low_pcnt_ecrps[0])+'-'+str(low_pcnt_ecrps[1])+' percentile')
+ax3.text(2.5,0.75,str(low_pcnt_ecrps[0])+'-'+str(low_pcnt_ecrps[1])+' percentile')
 ax3.set_xticks([0.75,1.75,2.75,3.75],['Lead %s' %(lds[0]),'Lead %s' %(lds[1]),'Lead %s' %(lds[2]),'Lead %s' %(lds[3])])
 
 #4a. Panel 5 eCRPS diagram on upper percentile range of data
@@ -171,7 +171,7 @@ ax4.set_xlim([0,4.5])
 ax4.set_ylim([0,1])
 ax4.set_title('Ensemble CRPS Skill Score')
 ax4.set_ylabel('eCRPS skill score')
-ax4.text(2.75,0.75,str(upr_pcnt_ecrps[0])+'-'+str(upr_pcnt_ecrps[1])+' percentile')
+ax4.text(2.5,0.75,str(upr_pcnt_ecrps[0])+'-'+str(upr_pcnt_ecrps[1])+' percentile')
 ax4.set_xticks([0.75,1.75,2.75,3.75],['Lead %s' %(lds[0]),'Lead %s' %(lds[1]),'Lead %s' %(lds[2]),'Lead %s' %(lds[3])])
 
 #save entire plot with labels
